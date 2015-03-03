@@ -19,10 +19,13 @@ describe('harvesterjs:app', function () {
   it('creates files', function () {
     assert.file([
       'package.json',
-      'app/index.js',
-      'app/api.js',
       '.editorconfig',
-      '.jshintrc'
+      '.jshintrc',
+      'app/',
+      'app/models/',
+      'test/',
+      'app/index.js',
+      'app/api.js'
     ]);
   });
 });

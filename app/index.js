@@ -31,6 +31,8 @@ module.exports = yeoman.generators.Base.extend({
   },
   scaffoldFolders: function(){
       this.mkdir("app");
+      this.mkdir("app/models");
+      this.mkdir("test");
   },
   writing: {
     root: function () {

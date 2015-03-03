@@ -25,6 +25,7 @@ describe('harvesterjs:app', function () {
       'app/models/',
       'test/',
       'app/index.js',
+      'app/config.js',
       'app/api.js'
     ]);
   });

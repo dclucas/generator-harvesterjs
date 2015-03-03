@@ -51,6 +51,10 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('_api.js'),
         this.destinationPath('app/api.js')
       );
+      this.fs.copy(
+        this.templatePath('_config.js'),
+        this.destinationPath('app/config.js')
+      );
     },
 
     projectfiles: function () {

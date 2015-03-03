@@ -18,8 +18,9 @@ describe('harvesterjs:app', function () {
 
   it('creates files', function () {
     assert.file([
-      'bower.json',
       'package.json',
+      'app/index.js',
+      'app/api.js',
       '.editorconfig',
       '.jshintrc'
     ]);

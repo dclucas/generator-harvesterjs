@@ -29,16 +29,25 @@ module.exports = yeoman.generators.Base.extend({
       done();
     }.bind(this));
   },
-
+  scaffoldFolders: function(){
+      this.mkdir("app");
+  },
   writing: {
-    app: function () {
+    root: function () {
       this.fs.copy(
         this.templatePath('_package.json'),
         this.destinationPath('package.json')
       );
+    },
+
+    app: function () {
       this.fs.copy(
-        this.templatePath('_bower.json'),
-        this.destinationPath('bower.json')
+        this.templatePath('_index.js'),
+        this.destinationPath('app/index.js')
+      );
+      this.fs.copy(
+        this.templatePath('_api.js'),
+        this.destinationPath('app/api.js')
       );
     },
 

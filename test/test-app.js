@@ -18,7 +18,7 @@ describe('harvesterjs:app', function () {
       .inDir(path.join(os.tmpdir(), './temp-test'))
       .withOptions({ 'skip-install': true })
       .withPrompt({
-        foobar: true
+        name: 'test123'
       })
       .on('end', done);
   });

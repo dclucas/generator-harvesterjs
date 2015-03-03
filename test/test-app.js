@@ -41,8 +41,6 @@ describe('harvesterjs:app', function () {
     this.timeout(90000);
     exec('npm install', function(error, stdout, stderr) {
       if (error) { console.log('Error: ' + error); throw error; }
-        //expect(stdout).to.contain 'Finished \'jshint\''
-        //expect(stdout).to.not.contain 'problems'
         done();
     });
   });

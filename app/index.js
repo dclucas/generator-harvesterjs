@@ -17,6 +17,9 @@ module.exports = yeoman.generators.Base.extend({
     ));
 
     var prompts = [{
+            name: 'appName',
+            message: 'What is your app\'s name ?'
+        },{
       type: 'confirm',
       name: 'someOption',
       message: 'Would you like to enable this option?',

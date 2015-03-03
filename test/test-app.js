@@ -4,14 +4,21 @@ var path = require('path');
 var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var os = require('os');
+var exec = require('child_process').exec;
+
 
 describe('harvesterjs:app', function () {
+  it('can be imported without blowing up', function() {
+      var app = require('../app');
+      assert(app !== undefined);
+  });
+  
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
       .inDir(path.join(os.tmpdir(), './temp-test'))
       .withOptions({ 'skip-install': true })
       .withPrompt({
-        someOption: true
+        foobar: true
       })
       .on('end', done);
   });
@@ -29,4 +36,15 @@ describe('harvesterjs:app', function () {
       'app/api.js'
     ]);
   });
+  
+  it('runs npm install successfully', function (done) {
+    this.timeout(90000);
+    exec('npm install', function(error, stdout, stderr) {
+      if (error) { console.log('Error: ' + error); throw error; }
+        //expect(stdout).to.contain 'Finished \'jshint\''
+        //expect(stdout).to.not.contain 'problems'
+        done();
+    });
+  });
+  
 });

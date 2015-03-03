@@ -1,4 +1,4 @@
-var harvester = require('harvest');
+var harvester = require('harvesterjs');
 var config = require('./config');
 
 var options = {

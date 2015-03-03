@@ -21,7 +21,7 @@ module.exports = yeoman.generators.Base.extend({
       name    : 'name',
       message : 'Your project name',
       default : this.appname // Default to current folder name
-      },{
+      }/*, {
         type: 'confirm',
         name: 'useWoodman',
         message: 'Would you like to enable woodman logging?',
@@ -31,7 +31,7 @@ module.exports = yeoman.generators.Base.extend({
         name: 'useFig',
         message: 'Would you like to enable fig?',
         default: false
-      }];
+      }*/];
 
     this.prompt(prompts, function (props) {
       this.name = props.name;

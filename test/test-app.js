@@ -42,7 +42,6 @@ describe('harvesterjs:app', function () {
       assert.fileContent('app/config.js', 'mongodb://127.0.0.1:27017/' + appName);
   })
   
-  /*
   it('runs npm install successfully', function (done) {
     this.timeout(90000);
     exec('npm install', function(error, stdout, stderr) {
@@ -50,6 +49,4 @@ describe('harvesterjs:app', function () {
         done();
     });
   });
-  */
-  
 });

@@ -1,0 +1,10 @@
+{
+  "name": "<%= name %>",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "node app/index.js"
+  },
+  "dependencies": {
+    "harvester":"agco/harvesterjs#develop"
+  }
+}

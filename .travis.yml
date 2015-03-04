@@ -1,6 +1,15 @@
 language: node_js
 node_js:
-  - '0.10'
+- '0.10'
 before_install:
-  - currentfolder=${PWD##*/}
-  - if [ "$currentfolder" != 'generator-harvesterjs' ]; then cd .. && eval "mv $currentfolder generator-harvesterjs" && cd generator-harvesterjs; fi
+- currentfolder=${PWD##*/}
+- if [ "$currentfolder" != 'generator-harvesterjs' ]; then cd .. && eval "mv $currentfolder
+  generator-harvesterjs" && cd generator-harvesterjs; fi
+deploy:
+  provider: npm
+  email: developer@agcocorp.com
+  api_key:
+    secure: ehXWO5DfnyHQcdHkNlECfAEFSY1p4yTuWAkOkFRk53oD2l7XMhq9hwK+VbF2uaVR0xzFml2gDNz0Zd7KiR4qaJAptEYPKzXMW/BT4vP+DnODmf3+khKdQcbNlUcoRPOOVVIKDnAZQijWP1+funpAQiYe/BwoL3cF0r8vHuBnQc4=
+  on:
+    tags: true
+    repo: dclucas/generator-harvesterjs

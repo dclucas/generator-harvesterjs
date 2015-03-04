@@ -5,6 +5,7 @@ before_install:
 - currentfolder=${PWD##*/}
 - if [ "$currentfolder" != 'generator-harvesterjs' ]; then cd .. && eval "mv $currentfolder
   generator-harvesterjs" && cd generator-harvesterjs; fi
+script: istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
 deploy:
   provider: npm
   email: developer@agcocorp.com

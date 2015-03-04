@@ -28,6 +28,7 @@ describe('harvesterjs:app', function () {
       'package.json',
       '.editorconfig',
       '.jshintrc',
+      '.gitignore',
       'app/',
       'app/models/',
       'test/',

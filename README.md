@@ -1,10 +1,11 @@
 # generator-harvesterjs
-A yeoman generator for harvester.js API projects
 
-# generator-harvesterjs [![Build Status](https://secure.travis-ci.org/dclucas/generator-harvesterjs.png?branch=master)](https://travis-ci.org/dclucas/generator-harvesterjs)
+[![Build Status](https://travis-ci.org/dclucas/generator-harvesterjs.svg?branch=master)](https://travis-ci.org/dclucas/generator-harvesterjs)
+[![Coverage Status](https://coveralls.io/repos/dclucas/generator-harvesterjs/badge.svg?branch=feature%2Fcoverage)](https://coveralls.io/r/dclucas/generator-harvesterjs?branch=feature%2Fcoverage)
+[![Dependency status](https://david-dm.org/dclucas/generator-harvesterjs.svg)](https://david-dm.org/dclucas/generator-harvesterjs)
+[![NPM](https://nodei.co/npm/generator-harvesterjs.png)](https://nodei.co/npm/generator-harvesterjs/)
 
-> [Yeoman](http://yeoman.io) generator
-
+A [yeoman](http://yeoman.io) generator for [harvester.js](https://github.com/agco/harvesterjs) API projects
 
 ## Getting Started
 

@@ -29,6 +29,7 @@ describe('harvesterjs:app', function () {
       '.editorconfig',
       '.jshintrc',
       '.gitignore',
+      'docker-compose.yml',
       'app/',
       'app/models/',
       'test/',

@@ -1,0 +1,31 @@
+cache:
+  image: ubuntu-debootstrap:14.04
+  volumes:
+    - /cache
+  command: echo
+es:
+  image: dockerfile/elasticsearch
+  expose:
+    - "9200"
+    - "9300"
+db:
+  image: dockerfile/mongodb
+  expose:
+    - "27017"
+  command: mongod --smallfiles
+web:
+  image: agco/buildstep
+  volumes_from:
+      - cache
+  command: npm start
+  volumes:
+    - .:/localrepo/
+    - ./env:/env
+  environment:
+    USE_LOCAL_REPO: true
+    PORT: 9000
+  ports:
+    - "9000"
+  links:
+    - db
+    - es

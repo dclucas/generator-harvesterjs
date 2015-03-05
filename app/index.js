@@ -83,6 +83,10 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('_.gitignore'),
         this.destinationPath('.gitignore')
       );
+      this.fs.copy(
+        this.templatePath('_docker-compose.yml'),
+        this.destinationPath('docker-compose.yml')
+      );
     }
   },
 

@@ -5,6 +5,7 @@
     "start": "node app/index.js"
   },
   "dependencies": {
-    "harvester":"agco/harvesterjs#develop"
+    "harvesterjs":"^0.3.1",
+    "require-dir": "^0.1.0"
   }
 }

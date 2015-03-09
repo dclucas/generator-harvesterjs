@@ -76,6 +76,17 @@ module.exports = yeoman.generators.Base.extend({
       );
     },
 
+    models: function () {
+      this.fs.copy(
+        this.templatePath('_post.json'),
+        this.destinationPath('app/models/post.json')
+      );
+      this.fs.copy(
+        this.templatePath('_comment.json'),
+        this.destinationPath('app/models/comment.json')
+      );
+    },
+
     projectfiles: function () {
       this.fs.copy(
         this.templatePath('editorconfig'),

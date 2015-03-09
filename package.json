@@ -1,6 +1,6 @@
 {
   "name": "generator-harvesterjs",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A yeoman generator for harvester.js API projects",
   "license": "MIT",
   "main": "app/index.js",

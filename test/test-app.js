@@ -29,12 +29,14 @@ describe('harvesterjs:app', function () {
       '.editorconfig',
       '.jshintrc',
       '.gitignore',
-      'app/',
-      'app/models/',
       'test/',
+      'app/',
       'app/index.js',
       'app/config.js',
-      'app/api.js'
+      'app/api.js',
+      'app/models/',
+      'app/models/post.json',
+      'app/models/comment.json'
     ]);
   });
   

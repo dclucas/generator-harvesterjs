@@ -20,8 +20,14 @@ module.exports = yeoman.generators.Base.extend({
       type    : 'input',
       name    : 'name',
       message : 'Your project name',
-      default : this.appname // Default to current folder name
-      }/*, {
+      default : this.appname
+      }, {
+        type: 'confirm',
+        name: 'useBluebird',
+        message: 'Would you like to enable bluebird (promises) support?',
+        default: true
+      }
+      /*, {
         type: 'confirm',
         name: 'useWoodman',
         message: 'Would you like to enable woodman logging?',

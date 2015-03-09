@@ -1,5 +1,7 @@
 var harvester = require('harvesterjs');
 var config = require('./config');
+var requireDir = require('require-dir');
+var models = requireDir('./models');
 
 var options = {
     adapter: 'mongodb',
@@ -7,16 +9,10 @@ var options = {
     inflect: true
 };
 
-// define 2 resources
-// posts and comments
-// analogue to the examples used on jsonapi.org
-var harvesterApp = harvester(options)
-    .resource('post', {
-        title: String
-    })
-    .resource('comment', {
-        body: String,
-        post: 'post'
-    });
+var harvesterApp = harvester(options);
+
+for (var m in models) {
+    harvesterApp.resource(m, models[m]);
+}
 
 module.exports = harvesterApp;

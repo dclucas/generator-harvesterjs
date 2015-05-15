@@ -12,7 +12,7 @@ describe('harvesterjs:app', function () {
       var app = require('../app');
       assert(app !== undefined);
   });
-  
+
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
       .inDir(path.join(os.tmpdir(), './temp-test'))
@@ -35,11 +35,11 @@ describe('harvesterjs:app', function () {
       'app/config.js',
       'app/api.js',
       'app/models/',
-      'app/models/post.json',
-      'app/models/comment.json'
+      'app/models/post.js',
+      'app/models/comment.js'
     ]);
   });
-  
+
   it('applies template changes correctly', function() {
       assert.fileContent('package.json', '"name": "' + appName + '"');
       assert.fileContent('app/config.js', 'mongodb://127.0.0.1:27017/' + appName);

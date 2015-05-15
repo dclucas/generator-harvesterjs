@@ -21,17 +21,7 @@ module.exports = yeoman.generators.Base.extend({
       name    : 'name',
       message : 'Your project name',
       default : this.appname // Default to current folder name
-      }/*, {
-        type: 'confirm',
-        name: 'useWoodman',
-        message: 'Would you like to enable woodman logging?',
-        default: true
-      },{
-        type: 'confirm',
-        name: 'useFig',
-        message: 'Would you like to enable fig?',
-        default: false
-      }*/];
+      }];
 
     this.prompt(prompts, function (props) {
       this.name = props.name;
@@ -72,12 +62,12 @@ module.exports = yeoman.generators.Base.extend({
 
     models: function () {
       this.fs.copy(
-        this.templatePath('_post.json'),
-        this.destinationPath('app/models/post.json')
+        this.templatePath('_post.js'),
+        this.destinationPath('app/models/post.js')
       );
       this.fs.copy(
-        this.templatePath('_comment.json'),
-        this.destinationPath('app/models/comment.json')
+        this.templatePath('_comment.js'),
+        this.destinationPath('app/models/comment.js')
       );
     },
 

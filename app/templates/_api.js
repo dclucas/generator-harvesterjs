@@ -1,7 +1,6 @@
+var fs = require('fs')
 var harvester = require('harvesterjs');
 var config = require('./config');
-var requireDir = require('require-dir');
-var models = requireDir('./models');
 
 var options = {
     adapter: 'mongodb',
@@ -9,10 +8,20 @@ var options = {
     inflect: true
 };
 
+function requireModel(resourceName) {
+  require('./models/' + resourceName)(harvesterApp)
+}
+
+function loadFile(fileName) {
+  var f = fileName.match( /(.*)\.js/ )
+  if (f != null) {
+    requireModel(f[1])
+  }
+}
+
 var harvesterApp = harvester(options);
 
-for (var m in models) {
-    harvesterApp.resource(m, models[m]);
-}
+var m = fs.readdirSync('./app/models')
+m.map(loadFile)
 
 module.exports = harvesterApp;

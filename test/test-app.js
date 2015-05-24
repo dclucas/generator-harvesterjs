@@ -35,19 +35,28 @@ describe('harvesterjs:app', function () {
       'app/config.js',
       'app/api.js',
       'app/models/',
-      'app/models/post.json',
-      'app/models/comment.json'
+      'app/models/post.js',
+      'app/models/comment.js'
     ]);
   });
   
   it('applies template changes correctly', function() {
       assert.fileContent('package.json', '"name": "' + appName + '"');
       assert.fileContent('app/config.js', 'mongodb://127.0.0.1:27017/' + appName);
-  })
-
-  it('runs npm install successfully', function (done) {
+  });
+  
+  it('runs npm install successfully @slow', function (done) {
     this.timeout(90000);
     exec('npm install', function(error, stdout, stderr) {
+      if (error) { console.log('Error: ' + error); throw error; }
+        done();
+    });
+  });
+
+  
+  it('runs npm test successfully @slow', function (done) {
+    this.timeout(90000);
+    exec('npm test', function(error, stdout, stderr) {
       if (error) { console.log('Error: ' + error); throw error; }
         done();
     });

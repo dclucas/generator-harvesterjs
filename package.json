@@ -1,6 +1,6 @@
 {
   "name": "generator-harvesterjs",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
@@ -14,7 +14,8 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "node_modules/.bin/mocha",
+    "fastcheck": "node_modules/.bin/mocha --grep @slow --invert"
   },
   "files": [
     "app"
@@ -23,8 +24,9 @@
     "yeoman-generator"
   ],
   "dependencies": {
-    "yeoman-generator": "^0.18.0",
     "chalk": "^1.0.0",
+    "glob": "^5.0.9",
+    "yeoman-generator": "^0.18.0",
     "yosay": "^1.0.0"
   },
   "devDependencies": {

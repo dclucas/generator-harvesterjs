@@ -16,18 +16,17 @@
 Scaffolds out a complete project directory structure for you:
 
     .
-    ├── app/
-    │   ├── index.js
-    │   ├── api.js
-    │   ├── config.js
-    │   └── models/
-    ├── .editorconfig
-    ├── .gitignore
-    ├── .jshintrc
-    ├── LICENSE
-    ├── package.json
-    └── test/
-
+	├── app
+	│   ├── api.js
+	│   ├── config.js
+	│   ├── index.js
+	│   └── models
+	│       ├── comment.js
+	│       ├── person.js
+	│       └── post.js
+	├── package.json
+	└── test
+	    └── add_resource.spec.js
 
 ## License
 

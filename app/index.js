@@ -2,6 +2,23 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var glob = require("glob");
+
+function copyDir(generator, path) {
+  var options = { "cwd": generator.templatePath(path) };
+  glob("_", options, function (er, files) {
+    files.map(function(f) { console.log(f) });
+  });
+  /*
+  var files = fs.readdir(generator.templatePath(path), function(file) {
+      this.fs.copyTpl(
+        this.templatePath('_package.json'),
+        this.destinationPath('package.json'),
+        { name: this.name }
+      );
+  });
+  */
+}
 
 module.exports = yeoman.generators.Base.extend({
   initializing: function () {
@@ -20,18 +37,13 @@ module.exports = yeoman.generators.Base.extend({
       type    : 'input',
       name    : 'name',
       message : 'Your project name',
-      default : this.appname // Default to current folder name
-      }/*, {
+      default : this.appname
+      }, {
         type: 'confirm',
         name: 'useWoodman',
-        message: 'Would you like to enable woodman logging?',
+        message: 'Would you like me to create Mocha unit tests?',
         default: true
-      },{
-        type: 'confirm',
-        name: 'useFig',
-        message: 'Would you like to enable fig?',
-        default: false
-      }*/];
+      }];
 
     this.prompt(prompts, function (props) {
       this.name = props.name;
@@ -47,6 +59,7 @@ module.exports = yeoman.generators.Base.extend({
   },
   writing: {
     root: function () {
+      copyDir(this, "/");
       this.fs.copyTpl(
         this.templatePath('_package.json'),
         this.destinationPath('package.json'),
@@ -83,11 +96,11 @@ module.exports = yeoman.generators.Base.extend({
 
     projectfiles: function () {
       this.fs.copy(
-        this.templatePath('editorconfig'),
+        this.templatePath('_.editorconfig'),
         this.destinationPath('.editorconfig')
       );
       this.fs.copy(
-        this.templatePath('jshintrc'),
+        this.templatePath('_.jshintrc'),
         this.destinationPath('.jshintrc')
       );
       this.fs.copy(

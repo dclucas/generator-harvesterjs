@@ -6,9 +6,11 @@ before_install:
 - if [ "$currentfolder" != 'generator-harvesterjs' ]; then cd .. && eval "mv $currentfolder
   generator-harvesterjs" && cd generator-harvesterjs; fi
 script: ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+services:
+  - mongodb
 deploy:
   provider: npm
-  email: developer@agcocorp.com
+  email: diogo.lucas@gmail.com
   api_key:
     secure: ehXWO5DfnyHQcdHkNlECfAEFSY1p4yTuWAkOkFRk53oD2l7XMhq9hwK+VbF2uaVR0xzFml2gDNz0Zd7KiR4qaJAptEYPKzXMW/BT4vP+DnODmf3+khKdQcbNlUcoRPOOVVIKDnAZQijWP1+funpAQiYe/BwoL3cF0r8vHuBnQc4=
   on:

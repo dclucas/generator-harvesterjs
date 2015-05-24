@@ -2,6 +2,7 @@
 
 module.exports = function (fortuneApp) {
   fortuneApp.resource('post', {
-    title: String
+    title: String,
+    author: 'person'
   });
 }

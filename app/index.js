@@ -5,19 +5,19 @@ var yosay = require('yosay');
 var glob = require("glob");
 
 function copyDir(generator, path) {
-  var options = { "cwd": generator.templatePath(path) };
-  glob("_", options, function (er, files) {
-    files.map(function(f) { console.log(f) });
-  });
-  /*
-  var files = fs.readdir(generator.templatePath(path), function(file) {
-      this.fs.copyTpl(
-        this.templatePath('_package.json'),
-        this.destinationPath('package.json'),
-        { name: this.name }
+  var srcRoot = generator.templatePath(path);
+  var dstRoot = generator.destinationPath(path);
+  var options = { "cwd": srcRoot, "dot": true };
+  glob("*", options, function (er, files) {
+    files.map(function(srcFile) {
+      //console.log("Copying " + srcRoot + srcFile + " to " + dstRoot + srcFile);
+      generator.fs.copyTpl(
+        srcRoot + srcFile,
+        dstRoot + srcFile,
+        { name: generator.name }
       );
+    });
   });
-  */
 }
 
 module.exports = yeoman.generators.Base.extend({
@@ -58,55 +58,8 @@ module.exports = yeoman.generators.Base.extend({
       this.mkdir("test");
   },
   writing: {
-    root: function () {
+    all: function () {
       copyDir(this, "/");
-      this.fs.copyTpl(
-        this.templatePath('_package.json'),
-        this.destinationPath('package.json'),
-        { name: this.name }
-      );
-    },
-
-    app: function () {
-      this.fs.copy(
-        this.templatePath('_index.js'),
-        this.destinationPath('app/index.js')
-      );
-      this.fs.copy(
-        this.templatePath('_api.js'),
-        this.destinationPath('app/api.js')
-      );
-      this.fs.copyTpl(
-        this.templatePath('_config.js'),
-        this.destinationPath('app/config.js'),
-        { name: this.name }
-      );
-    },
-
-    models: function () {
-      this.fs.copy(
-        this.templatePath('_post.json'),
-        this.destinationPath('app/models/post.json')
-      );
-      this.fs.copy(
-        this.templatePath('_comment.json'),
-        this.destinationPath('app/models/comment.json')
-      );
-    },
-
-    projectfiles: function () {
-      this.fs.copy(
-        this.templatePath('_.editorconfig'),
-        this.destinationPath('.editorconfig')
-      );
-      this.fs.copy(
-        this.templatePath('_.jshintrc'),
-        this.destinationPath('.jshintrc')
-      );
-      this.fs.copy(
-        this.templatePath('_.gitignore'),
-        this.destinationPath('.gitignore')
-      );
     }
   },
 
@@ -114,7 +67,6 @@ module.exports = yeoman.generators.Base.extend({
     this.installDependencies({
       skipInstall: this.options['skip-install'],
       bower: false
-      //, npm: false
     });
   }
 });

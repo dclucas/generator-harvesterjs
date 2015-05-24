@@ -1,16 +1,17 @@
 'use strict';
+
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
-var glob = require("glob");
+var glob = require('glob');
 
 function copyDir(generator, path) {
   var srcRoot = generator.templatePath(path);
   var dstRoot = generator.destinationPath(path);
-  var options = { "cwd": srcRoot, "dot": true };
-  glob("*", options, function (er, files) {
+  var options = { 'cwd': srcRoot, 'dot': true };
+  glob('*', options, function (er, files) {
     files.map(function(srcFile) {
-      //console.log("Copying " + srcRoot + srcFile + " to " + dstRoot + srcFile);
+      //console.log('Copying ' + srcRoot + srcFile + ' to ' + dstRoot + srcFile);
       generator.fs.copyTpl(
         srcRoot + srcFile,
         dstRoot + srcFile,
@@ -34,10 +35,10 @@ module.exports = yeoman.generators.Base.extend({
     ));
 
     var prompts = [{
-      type    : 'input',
-      name    : 'name',
-      message : 'Your project name',
-      default : this.appname
+      type: 'input',
+      name: 'name',
+      message: 'Your project name',
+      default: this.appname
       }, {
         type: 'confirm',
         name: 'useWoodman',
@@ -53,13 +54,13 @@ module.exports = yeoman.generators.Base.extend({
     }.bind(this));
   },
   scaffoldFolders: function(){
-      this.mkdir("app");
-      this.mkdir("app/models");
-      this.mkdir("test");
+      this.mkdir('app');
+      this.mkdir('app/models');
+      this.mkdir('test');
   },
   writing: {
     all: function () {
-      copyDir(this, "/");
+      copyDir(this, '/');
     }
   },
 

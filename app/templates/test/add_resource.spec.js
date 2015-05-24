@@ -1,3 +1,5 @@
+'use strict';
+
 var chai = require('chai');
 chai.should();
 chai.use(require('chai-http'));
@@ -14,11 +16,12 @@ if (!global.Promise) {
 
 before(function() {
     app.listen(cfg.port);
-})
+});
 
-var validPersonBody = { "people": [{ "name": "John Doe", "email": "john.doe@email.com" }]};
+var validPersonBody = { 'people': [{ 'name': 'John Doe', 'email': 'john.doe@email.com' }]};
 
 function checkBody(response) {
+    /*eslint no-unused-expressions:0*/
     response.should.exist;
     response.body.should.exist;
     response.body.people[0].id.should.exist;
@@ -44,16 +47,17 @@ describe('Given a valid person resource', function(){
                     res.should.have.status(201);
                     return res;
                 });
-            
+
             return responsePromise;
-        })
-        
+        });
+
         it('And the response contains the newly created resource', function() {
-            return responsePromise = responsePromise.then(function() {
+            return responsePromise.then(function(res) {
                 newId = checkBody(response);
+                return res;
             });
         });
-        
+
         it('And I can now get the newly created resource', function() {
             return responsePromise.then(function() {
                 return chai.request(app.router)
@@ -66,5 +70,5 @@ describe('Given a valid person resource', function(){
                     });
             });
         });
-    })
-})
+    });
+});

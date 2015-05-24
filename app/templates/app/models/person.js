@@ -5,4 +5,4 @@ module.exports = function (fortuneApp) {
     name: String,
     email: String
   });
-}
+};
